@@ -252,7 +252,7 @@ export default function Charity() {
                                 <h3 className="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold text-sc-gold">Masterplan</h3>
                             </div>
                             <div className="lg:me-8">
-                                <Image src="/images/charity/master plan.svg" width={0} height={0} sizes='100vw'
+                                <Image src="/images/santaclara/master plan.svg" width={0} height={0} sizes='100vw'
                                        style={{width: "100%", height: "auto"}} alt=""/>
                             </div>
                             <div className="grid grid-cols-1 pb-8 text-center">
