@@ -51,7 +51,7 @@ export default function SmallNavbar(){
                 </li>*/}
 
                 <li className="inline ps-1 mb-0">
-                <Link href="https://github.com/GrappePie/SantaClara-LandingPage/raw/main/public/BROCHURE%20HD%20-%20SANTA%20CLARA%20ECOVILLAGE.pdf" target="_blank" className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-sc-blue hover:bg-sc-green border border-sc-blue hover:border-sc-green text-white"><Icon.ArrowDown className="h-4 w-4"></Icon.ArrowDown></Link>
+                <Link href="https://github.com/GrappePie/SantaClara-LandingPage/raw/main/public/BROCHURE%20HD%20-%20SANTA%20CLARA%20ECOVILLAGE.pdf" target="_blank" className="h-9 px-1 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-sc-blue hover:bg-sc-green border border-sc-blue hover:border-sc-green text-white fixed right-[60px] top-5 md:static"><Icon.ArrowDown className="h-4 w-4"></Icon.ArrowDown>Brochure</Link>
                 </li>
             </ul>
 
