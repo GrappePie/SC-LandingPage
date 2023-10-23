@@ -37,6 +37,30 @@ export default function Charity() {
     }, []);
     const [isOpen, setOpen] = useState(false)
 
+    const handleSummit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const plainFormData = Object.fromEntries(formData.entries());
+        const formDataJsonString = JSON.stringify(plainFormData);
+        fetch('/api/send-email', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: formDataJsonString
+        }).then(response => {
+            console.log(response)
+            if (response.ok) {
+                return response.json()
+            }
+            return Promise.reject(response)
+        }).then(data => {
+            console.log(data)
+            alert("Gracias por contactarnos, en breve nos pondremos en contacto con usted.")
+            e.target.reset();
+        }).catch(error => {
+            console.error('Error:', error)
+        })
+    }
+
     return (
         <>
             <div id="globalLoader">
@@ -74,7 +98,7 @@ export default function Charity() {
                                     <p className="text-slate-400">Déjanos tus datos y te contactaremos a la brevedad</p>
                                 </div>
 
-                                <form>
+                                <form onSubmit={handleSummit}>
                                     <div className="grid grid-cols-1">
                                         <div>
                                             <div className="grid md:grid-cols-2 gap-5">
@@ -151,16 +175,16 @@ export default function Charity() {
                 <div className="grid grid-cols-1 pb-8 text-center">
                     <h3 className="mb-6 md:text-5xl text-4xl md:leading-normal leading-normal text-white font-bold">Financiamiento</h3>
                 </div>
-                <div className="container relative">
+                <div className="container relative px-0">
                     <div className="relative grid md:grid-cols-4 grid-cols-2 items-center gap-[30px]">
                         <div className="counter-box text-center">
                             <h1 className="text-4xl font-bold mb-4 text-white">¡Aparta tu terreno desde $<CountUp
-                                className="counter-value" start={1} end={2000}/>!</h1>
+                                className="counter-value" start={0} end={2000}/>!</h1>
                         </div>
 
                         <div className="counter-box text-center">
                             <h1 className="text-4xl font-bold mb-4 text-white">Terrenos desde <CountUp
-                                className="counter-value" start={1} end={240}/>2m²</h1>
+                                className="counter-value" start={0} end={240}/>m²</h1>
                         </div>
 
                         <div className="counter-box text-center">
@@ -171,7 +195,7 @@ export default function Charity() {
                         <div className="counter-box text-center">
                             <h1 className="text-4xl font-bold mb-4 text-white"><CountUp className="counter-value"
                                                                                         start={0} end={60}/>MSI</h1>
-                            <h5 className="counter-head text-xs font-semibold text-white">DESCUENTOS POR PRONTO
+                            <h5 className="counter-head text-xs font-semibold text-white">Y DESCUENTOS POR PRONTO
                                 PAGO</h5>
                         </div>
                     </div>
@@ -243,13 +267,12 @@ export default function Charity() {
             <ModalVideo channel='vimeo' autoplay isOpen={isOpen} videoId="749762017"
                         onClose={() => setOpen(false)}/>
 
-            <section className="relative md:py-24 py-16 amenidades">
-                <AmenidadesSlider/>
+            <section className="relative md:py-24 py-16 amenidades justify-center items-center">
                 <div className="container relative p-5 masterplan">
                     <div className="grid md:grid-cols-1 grid-cols-1 items-center gap-[30px]">
                         <div className="md:col-span-1">
                             <div className="grid grid-cols-1 pb-8 text-center">
-                                <h3 className="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold text-sc-gold">Masterplan</h3>
+                                <h3 className="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold text-sc-gold">Eco-parque</h3>
                             </div>
                             <div className="lg:me-8">
                                 <Image src="/images/santaclara/master plan.svg" width={0} height={0} sizes='100vw'
@@ -261,6 +284,24 @@ export default function Charity() {
                         </div>
                     </div>
                 </div>
+                <AmenidadesSlider services={["/images/amenidades/ecoparque/1.svg","/images/amenidades/ecoparque/2.svg","/images/amenidades/ecoparque/3.svg","/images/amenidades/ecoparque/4.svg","/images/amenidades/ecoparque/5.svg","/images/amenidades/ecoparque/6.svg","/images/amenidades/ecoparque/7.svg","/images/amenidades/ecoparque/8.svg","/images/amenidades/ecoparque/9.svg"]}/>
+                <div className="container relative p-5 masterplan">
+                    <div className="grid md:grid-cols-1 grid-cols-1 items-center gap-[30px]">
+                        <div className="md:col-span-1">
+                            <div className="grid grid-cols-1 pb-8 text-center">
+                                <h3 className="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold text-sc-gold">Desarrollo</h3>
+                            </div>
+                            <div className="lg:me-8">
+                                <Image src="/images/amenidades/desarrollo/desarrollo.svg" width={0} height={0} sizes='100vw'
+                                       style={{width: "100%", height: "auto"}} alt=""/>
+                            </div>
+                            <div className="grid grid-cols-1 pb-8 text-center">
+                                <p className="text-slate-400 max-w-xl mx-auto">Amenidades del desarrollo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <AmenidadesSlider services={["/images/amenidades/desarrollo/1.svg","/images/amenidades/desarrollo/2.svg","/images/amenidades/desarrollo/3.svg","/images/amenidades/desarrollo/4.svg","/images/amenidades/desarrollo/5.svg","/images/amenidades/desarrollo/6.svg"]}/>
                 <AmenidadesSlider2/>
             </section>
 

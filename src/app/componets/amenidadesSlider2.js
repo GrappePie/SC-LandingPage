@@ -58,7 +58,6 @@ export default function Amenidadeslider2(){
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % services.length);
     };
     const handleImageClick = (index) => {
-        console.log(index);
         setCurrentImageIndex(index);
         setLightbox(true);
     };

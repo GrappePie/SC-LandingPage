@@ -35,7 +35,7 @@ export default function PlayaViva(props) {
     return (
         <section className="relative md:py-24 py-16">
             <div className="grid grid-cols-1 pb-8 text-center">
-                <h3 className="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold text-sc-blue dark:text-sc-gold font-engravers">Club de playa</h3>
+                <h3 className="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold text-sc-gold">Amenidades - Club de playa</h3>
             </div>
             {props.containerClass === true ? <div className="container-fluid relative">
                         <div className={props.className}>

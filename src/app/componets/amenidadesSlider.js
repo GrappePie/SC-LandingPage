@@ -26,15 +26,15 @@ const settings2 = {
     gutter: 0,
     responsive: {
         1025: {
-            items: 12
+            items: 9
         },
 
         992: {
-            items: 8
+            items: 7
         },
 
         767: {
-            items: 6
+            items: 5
         },
 
         320: {
@@ -43,9 +43,7 @@ const settings2 = {
     },
 }
 
-export default function Amenidadeslider(){
-
-    const services = ["/images/amenidades/1.svg","/images/amenidades/2.svg","/images/amenidades/3.svg","/images/amenidades/4.svg","/images/amenidades/5.svg","/images/amenidades/6.svg","/images/amenidades/7.svg","/images/amenidades/8.svg","/images/amenidades/9.svg","/images/amenidades/10.svg","/images/amenidades/11.svg","/images/amenidades/12.svg","/images/amenidades/13.svg","/images/amenidades/14.svg","/images/amenidades/15.svg"]
+export default function Amenidadeslider({services}){
 
     const [lightBox, setLightbox] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -58,7 +56,6 @@ export default function Amenidadeslider(){
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % services.length);
     };
     const handleImageClick = (index) => {
-        console.log(index);
         setCurrentImageIndex(index);
         setLightbox(true);
     };
@@ -66,9 +63,6 @@ export default function Amenidadeslider(){
   
     return(
         <div className="container-fluid relative">
-            <div className="grid grid-cols-1 pb-8 text-center">
-                <h3 className="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold text-sc-gold">Amenidades</h3>
-            </div>
             <div className="grid grid-cols-1 relative">
                 <div className="tiny-twelve-item">
 
